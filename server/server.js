@@ -68,9 +68,9 @@ const fetchAndStoreDailySummaries = async () => {
 // // Schedule the job to run at every 5 mintues
 // schedule.scheduleJob('*/5 * * * *', checkWeatherAndAlerts);
 
-schedule.scheduleJob('* * * * *', checkWeatherAndAlerts);
+schedule.scheduleJob('*/5 * * * *', checkWeatherAndAlerts);
   // Schedule the job to run daily at midnight
 
-//   schedule.scheduleJob('* * * * *', async () => {
-//     await fetchAndStoreDailySummaries();
-//   });
+schedule.scheduleJob('0 0 * * *', async () => {
+    await fetchAndStoreDailySummaries();
+});
