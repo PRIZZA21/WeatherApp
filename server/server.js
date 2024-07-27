@@ -16,7 +16,7 @@ app.use(cors());
 require('dotenv').config();
 
 // MongoDB Atlas connection
-const uri = 'mongodb+srv://priyanshu:jayant172@weatherapp.1mybl9k.mongodb.net/?retryWrites=true&w=majority&appName=WeatherApp';
+const uri = process.env.MONGO_URI
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 
