@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getDailySummaries } from '../api';
+import './DailySummary.css'; // Import the CSS file
 
 const cities = ['Delhi', 'Mumbai', 'Chennai', 'Bangalore', 'Kolkata', 'Hyderabad'];
 
@@ -30,15 +31,15 @@ const DailySummary = () => {
   }, []);
 
   return (
-    <div>
-      <h2>Daily Weather Summaries</h2>
+    <div className="container">
+      <h2 className="header">Daily Weather Summaries</h2>
       {loading ? (
-        <p>Loading...</p>
+        <p className="loading">Loading...</p>
       ) : (
         Object.keys(summaries).map(city => (
-          <div key={city}>
+          <div key={city} className="city-container">
             <h3>{city}</h3>
-            <ul>
+            <ul className="summary-list">
               {summaries[city].map((summary, index) => (
                 <li key={index}>
                   {`${summary.date}: Avg Temp ${summary.avg_temp}°C, Max Temp ${summary.max_temp}°C, Min Temp ${summary.min_temp}°C, Condition ${summary.dominant_condition}`}

@@ -1,6 +1,6 @@
-// src/components/SetThresholds.js
 import React, { useState } from 'react';
 import { setThresholds } from '../api';
+import './setThreshold.css';
 
 const SetThresholds = () => {
   const [city, setCity] = useState('');
@@ -29,9 +29,9 @@ const SetThresholds = () => {
   };
 
   return (
-    <div>
-      <h2>Set Thresholds for a City</h2>
-      <form onSubmit={handleSubmit}>
+    <div className="set-thresholds-container">
+      <h2 className="set-thresholds-heading">Set Thresholds for a City</h2>
+      <form onSubmit={handleSubmit} className="set-thresholds-form">
         <div>
           <label>City:</label>
           <input type="text" value={city} onChange={(e) => setCity(e.target.value)} required />
@@ -48,9 +48,9 @@ const SetThresholds = () => {
           <label>Consecutive Updates:</label>
           <input type="number" value={consecutiveUpdates} onChange={(e) => setConsecutiveUpdates(e.target.value)} required />
         </div>
-        <button type="submit">Set Thresholds</button>
+        <button type="submit" className="set-thresholds-button">Set Thresholds</button>
       </form>
-      {message && <p>{message}</p>}
+      {message && <p className="set-thresholds-message">{message}</p>}
     </div>
   );
 };

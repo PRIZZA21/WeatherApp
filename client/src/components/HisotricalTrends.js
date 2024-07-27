@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { getDailySummaries } from '../api';
 import { Line } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
+import './HistoricalTrends.css'; // Import the CSS file
 
 const cities = ['Delhi', 'Mumbai', 'Chennai', 'Bangalore', 'Kolkata', 'Hyderabad'];
 
@@ -21,6 +22,8 @@ const HistoricalTrends = () => {
           acc[city] = data;
           return acc;
         }, {});
+
+        console.log(dataObj)
 
         setData(dataObj);
       } catch (error) {
@@ -53,9 +56,11 @@ const HistoricalTrends = () => {
   });
 
   return (
-    <div>
-      <h2>Historical Trends</h2>
-      <Line data={chartData} options={{ responsive: true, plugins: { legend: { position: 'top' } } }} />
+    <div className="container">
+      <h2 className="header">Historical Trends</h2>
+      <div className="chart-container">
+        <Line data={chartData} options={{ responsive: true, plugins: { legend: { position: 'top' } } }} />
+      </div>
     </div>
   );
 };

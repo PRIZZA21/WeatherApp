@@ -48,8 +48,17 @@ const fetchAndStoreDailySummaries = async () => {
         console.error('Weather data is not an array');
         return;
       }
+
+
+      const now = Math.floor(Date.now() / 1000); // Current time in seconds
+      const twentyFourHoursAgo = now - 24 * 60 * 60; // 24 hours ago in seconds
     
-    const cityGroupedData = weatherData.reduce((acc, data) => {
+      // Filter weather data to include only entries from the past 24 hours
+      const filteredWeatherData = weatherData.filter(data => data.dt >= twentyFourHoursAgo);
+
+
+    
+    const cityGroupedData = filteredWeatherData.reduce((acc, data) => {
       if (!acc[data.city]) acc[data.city] = [];
       acc[data.city].push(data);
       return acc;
@@ -74,3 +83,6 @@ schedule.scheduleJob('0 */2 * * *', checkWeatherAndAlerts);
 schedule.scheduleJob('0 0 * * *', async () => {
     await fetchAndStoreDailySummaries();
 });
+// schedule.scheduleJob('* * * * *', async () => {
+//     await fetchAndStoreDailySummaries();
+// });
