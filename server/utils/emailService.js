@@ -20,7 +20,7 @@ const sendEmail = (to, subject, text) => {
 //   };
 
 //   return transporter.sendMail(mailOptions);
-console.log("Trying to send email fuck this shit")
+console.log("Trying to send email ")
 };
 
 module.exports = sendEmail;
