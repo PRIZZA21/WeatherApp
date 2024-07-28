@@ -20,7 +20,7 @@ This is a full-stack Weather App that provides daily weather summaries, historic
 
 - **Node.js**: For the server-side application.
 - **Express.js**: For building the API endpoints.
-- **EmailJS**: For sending emails.
+- **Noemailer**: For sending emails.
 
 ### Database
 
